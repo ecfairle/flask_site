@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% if title %}
+    <title>{{ title }} - thing</title>
+    {% else %}
+    <title>Welcome to this thing</title>
+    {% endif %}
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="nav">
+      <div class="container-fluid">
+        <div class="navbar-header" id="menu_button">
+          {% if current_user.is_authenticated %}
+          <div class="menuIcon"><a id="nav_list" href="#">&#9776;</a></div>
+          {% endif %}
+        </div>
+          {% if current_user.is_authenticated %}
+          <div class="logout_button">Logged in as {{current_user.username}}, <br> <a href="/logout">Log out</a></div>
+          {% endif %}
+          <h3 class="masthead-brand"><p>A website with things</p></h3>
+      </div>
+    </nav>
+
+    <div class="pushmenu-push" id="main_block">
+      {% block content %}{% endblock %}
+    </div>
+
+    <nav class="pushmenu pushmenu-left">
+      <ul class="links">
+        <li> <a href="#" id="home" url='/index' class="active">Home</a> </li>
+        <li> <a href="#" id="about" url= '/about'>About</a> </li>
+        <li> <a href="#">Projects</a> </li>
+        <li> <a href="#">Blog</a> </li>
+        <li> <a href="#">Contacts</a> </li>
+      </ul>
+    </nav>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/push_menu.js') }}"></script>
+    <script src="https://fb.me/react-15.2.1.js"></script>
+    <script src="https://fb.me/react-dom-15.2.1.js"></script>
+</html>

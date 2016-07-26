@@ -1,0 +1,23 @@
+{% from '_form_helper.html' import render_field %}
+{% extends "base.html" %}
+
+{% block content %}
+<div id="home_container">
+  <h1>Sign In</h1>
+  <form action="" method="post" id="login_form" url='/login'>
+      {{ form.hidden_tag() }}
+      <p>
+         <br>
+         {{ render_field(form.username,class="username",placeholder="username",autofocus="true") }}<br>
+         <br>
+         {{ render_field(form.password,class="password",placeholder="password")}}<br>
+      </p>
+      <p>{{ form.remember_me }} Remember Me</p>
+      <p><input type="submit" value="Sign In"></p>
+  </form>
+  <form action="/register" method="get">
+    <input type="submit" value="Register" 
+         name="register" id="frm1_submit" />
+  </form>
+</div>
+{% endblock %}

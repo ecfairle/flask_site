@@ -1,0 +1,9 @@
+WTForms
+SQLAlchemy
+mysqlclient
+Flask-WTF
+Flask-SQLAlchemy
+Flask-Login
+Flask
+bcrypt
+Werkzeug
